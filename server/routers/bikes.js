@@ -63,6 +63,9 @@ router.put("/:id", async (req, res) => {
         };
     });
     error ? res.status(404) : res.status(200);
+    client.query("SELECT name, rented, id_bike FROM bikes ORDER BY id_bike;", (err, bikes) => {
+        console.log(bikes.rows)
+    });
 });
 
 router.delete("/:id", (req, res) => {
